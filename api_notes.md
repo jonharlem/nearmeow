@@ -63,7 +63,7 @@
 - [helpful blog post](http://www.seoskeptic.com/google-releases-knowledge-graph-api/)
 
 
-
+--------------------
 
 #[Google Places API](https://developers.google.com/places/)
 - uses unique [Place IDs](https://developers.google.com/places/place-id)
@@ -80,8 +80,6 @@
 	- Radar Search returns a large list of places within a specified search radius, but with less detail than either Nearby Search or Text Search.
 	- Place Details requests return more detailed information about a specific place, including user reviews.
 - The information returned can include establishments — such as restaurants, stores, and offices as well as 'geocode' results, which indicate addresses, political areas such as towns and cities, and other points of interest.
-
-
 
 
 ##[Google Places API Web Service](https://developers.google.com/places/web-service/)
@@ -209,3 +207,43 @@
   "status": "OK"
 }
 ```
+
+--------------------
+
+#[Google Maps APIs](https://developers.google.com/maps/)
+
+##[Google Maps APIs for Web](https://developers.google.com/maps/web/)
+- Embed Google Maps features and functionality in your sites.
+
+###[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript)
+- Customize maps with your own content and imagery. Robust feature support.
+- Accessing local data and maps built from the same data sources as Google Maps, build and style a map onto your website using the Google Maps JavaScript API. Multiple libraries are available and services such as geocoding, directions, Street View and more to customize your maps to fit your needs.
+
+##[Google Maps Web Service APIs](https://developers.google.com/maps/web-services/)
+- Implement highly scalable server-side APIs for any app or website.
+
+
+
+
+
+
+--------------------
+
+
+#other
+
+##[geoPlugin](http://www.geoplugin.com/)
+- geolocation without a user prompt
+- guesses based on IP address
+- (many similar)
+
+##[Foursquare API](https://developer.foursquare.com/)
+- gives you access to our world-class places database
+
+###[Foursquare Venues Service](https://developer.foursquare.com/overview/venues)
+-  makes it easy to build location information into applications without requiring a deeper Foursquare integration or even user authentication
+-  Build your app on top of our venues database of millions and millions of places from all over the world
+
+
+
+
