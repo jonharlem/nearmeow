@@ -15,7 +15,7 @@ router.get('/instagram/callback', function(req, res) {
       client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
       grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:3000/auth/instagram/callback',
-      code: tokenCode
+      code: req.query.code
     },
     uri:'https://api.instagram.com/oauth/access_token',
     method: 'POST'
