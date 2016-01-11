@@ -11,4 +11,8 @@ router.post('/', function(req, res, next) {
 
 })
 
+router.get('/recent', function(req, res, next) {
+	//'https://api.instagram.com/v1/media/search?lat=48.858844&lng=2.294351&access_token=process.env. '
+})
+
 module.exports = router;

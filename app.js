@@ -35,12 +35,10 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 passport.serializeUser(function(user, done) {
-  console.log('serialize:', user);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
-  console.log('serialize:', obj);
   done(null, obj);
 });
 
