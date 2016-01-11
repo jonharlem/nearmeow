@@ -56,7 +56,10 @@
 - @type is the schema.org type
 - a working URL can be built from the `kg` context + the `@id`: http://g.co/kg/m/03zyss
 	- this link opens a google search with a knowledge graph-based side bar
-	- bottom of the side bar sometimes has a "People also search for" section
+	- bottom of the side bar sometimes ( or always? ) has a "People also search for" div with a stable `class="_c4 _Dnh"`
+	- this div has five child divs
+	- these children have title text, thumbnail image and a query link
+		- the 72px x 72px image is raw Base64 image data
 
 ###other links:
 - [JSON-LD Processor and API implementation in JavaScript](https://github.com/digitalbazaar/jsonld.js)
@@ -215,9 +218,11 @@
 ##[Google Maps APIs for Web](https://developers.google.com/maps/web/)
 - Embed Google Maps features and functionality in your sites.
 
-###[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript)
+###[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript) (use this for the client-side map)
 - Customize maps with your own content and imagery. Robust feature support.
 - Accessing local data and maps built from the same data sources as Google Maps, build and style a map onto your website using the Google Maps JavaScript API. Multiple libraries are available and services such as geocoding, directions, Street View and more to customize your maps to fit your needs.
+- styled by passing a [style array](https://developers.google.com/maps/documentation/javascript/styling?csw=1#style_syntax) into the new Map constructor
+	- use [Snazzy Map](https://snazzymaps.com/editor) to generate the style array
 
 ##[Google Maps Web Service APIs](https://developers.google.com/maps/web-services/)
 - Implement highly scalable server-side APIs for any app or website.
@@ -235,7 +240,11 @@
 ##[geoPlugin](http://www.geoplugin.com/)
 - geolocation without a user prompt
 - guesses based on IP address
-- (many similar)
+- (many similar plugins)
+
+##[Google Maps Geolocation API](https://developers.google.com/maps/documentation/geolocation)
+- make a POST request with server key, e.g.: `https://www.googleapis.com/geolocation/v1/geolocate?key=SERVERKEYHERE`
+- request body needs to be JSON with cell and/or router info, e.g.: `{"wifiAccessPoints": [{"macAddress": "a8:66:7f:07:a1:97"}]}`
 
 ##[Foursquare API](https://developer.foursquare.com/)
 - gives you access to our world-class places database
