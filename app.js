@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var InstagramStrategy = require('passport-instagram').Strategy;
 require('dotenv').load();
 
@@ -24,33 +23,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: [
-    'thisIsAKey'
-  ]
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
-passport.use(new InstagramStrategy({
-    clientID: process.env['INSTAGRAM_CLIENT_ID'],
-    clientSecret: process.env['INSTAGRAM_CLIENT_SECRET'],
-    callbackURL: "http://localhost:3000/auth/instagram/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
-));
 
 app.use('/', routes);
 app.use('/users', users);
