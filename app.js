@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 require('dotenv').load();
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var places = require('./routes/places');
 var auth = require('./routes/auth');
 
 var app = express();
@@ -30,7 +30,7 @@ app.use(cookieSession({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/places', places);
 app.use('/auth', auth);
 
 // catch 404 and forward to error handler
