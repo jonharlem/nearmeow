@@ -30,28 +30,55 @@ html, body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 99;
-	background-color: rgba(253,202,135,0.9);
+	background-color: #F39B6D;
+	border-radius: 4px;
+	box-shadow: 0 0 100px #b3d1ff;
 }
 
 
 #inputlabel {
 	font-size: 350%;
 	color: white;
-	padding:10px;
+	margin:10px 0 10px 20px;
 }
 
-input {
+#maininput {
 	font-size:350%;
 	text-align: center;
-/*	background: rgba(255,255,255,0.8);
-*/    border: none;
 	background: none;
-    border-radius: 4px;
-    padding:10px;
+    margin:10px;
     color:white;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 5px solid white;
 }
 
-input:focus {
+#maininput:focus {
 /*	background: rgba(255,255,255,1.0);
 */	outline: none;
 }
+
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
