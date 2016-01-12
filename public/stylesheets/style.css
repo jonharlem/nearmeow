@@ -17,13 +17,20 @@ html, body {
 #map {
  	height: 100%;
 }
-/*
-#overlays {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+
+#logo {
+	position:absolute;
+	top:30px;
+	left:30px;
+	width:100px;
+	height:100px;
+	z-index: 98;
+	font-size: 250%;
+	font-weight: bolder;
+	line-height: 65%;
+	color: #3E6990;
 }
-*/
+
 #searchbar {
 	position: absolute;
 	top: 50%;

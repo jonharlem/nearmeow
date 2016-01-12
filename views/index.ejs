@@ -6,8 +6,8 @@
   </head>
   <body>
     <div id="overlays">
-      <div>
-        near meow  
+      <div id="logo">
+        near<br>meow  
       </div>
       <div id="searchbar">
         <span id="inputlabel">My next</span>
@@ -82,7 +82,8 @@
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.783, lng: -122.416},
           styles: styleArray,
-          zoom: 11
+          zoom: 12,
+          disableDefaultUI: true
         });
       }
     </script>
