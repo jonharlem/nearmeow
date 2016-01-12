@@ -9,6 +9,9 @@
       <div id="navbar" class="overlay">
         <div>
           <a href="/auth/instagram/">Login with Instagram</a>
+          <% if (user) { %>
+            <%= user %>
+          <% } %>
         </div>
         <div id="quote">
           Find cool stuff!
