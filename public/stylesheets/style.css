@@ -1,8 +1,111 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, body {
+ 	height: 100%;
+ 	margin: 0;
+ 	padding: 0;
+ 	position:relative;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#map {
+ 	height: 100%;
+}
+
+.overlay {
+	position:absolute;
+	z-index: 99;
 }
 
 a {
-  color: #00B7FF;
+	color:white;
+
 }
+
+#navbar {
+	width:100%;
+	height: 50px;
+	background-color: rgba(62,105,144,0.9);
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+#navbar > div {
+	padding:0 20px 0 20px;
+	color:white;
+	font-size:110%;
+	font-weight: lighter;
+	letter-spacing: 1px;
+}
+
+#quote {
+    font-style: italic;
+}
+
+#logo {
+	top:60px;
+	left:10px;
+	width:100px;
+	height:100px;
+	font-size: 250%;
+	font-weight: bolder;
+	line-height: 65%;
+	color: rgba(62,105,144,1);
+	text-shadow:0 0 10px rgba(255,255,255,0.3);
+	letter-spacing: 1px;
+}
+
+#searchbar {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #F39B6D;
+	border-radius: 4px;
+	box-shadow: 0 0 100px #b3d1ff;
+}
+
+
+#inputlabel {
+	font-size: 350%;
+	color: white;
+	margin:10px 0 10px 20px;
+}
+
+#maininput {
+	font-size:350%;
+	text-align: center;
+	background: none;
+    margin:10px;
+    color:white;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 5px solid white;
+}
+
+#maininput:focus {
+/*	background: rgba(255,255,255,1.0);
+*/	outline: none;
+}
+
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+

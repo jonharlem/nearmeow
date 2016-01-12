@@ -5,7 +5,111 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div>
+      <div id="navbar" class="overlay">
+        <div>
+          <a href="/auth/instagram/">Login with Instagram</a>
+        </div>
+        <div id="quote">
+          Find cool stuff!
+        </div>
+        <div>
+          <a href="/about">About</a>
+        </div>
+      </div>
+      <div id="logo" class="overlay">
+        near<br>meow  
+      </div>
+      <div id="searchbar" class="overlay">
+        <span id="inputlabel">My next</span>
+        <input id="maininput" size="8" value="" type="text">
+      </div>
+    </div>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        var styleArray = [
+    {
+        "featureType": "administrative",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "lightness": "45"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+  ]
+
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.783, lng: -122.416},
+          styles: styleArray,
+          zoom: 12,
+          disableDefaultUI: true
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= gmapsBrowserKey %>&callback=initMap" async defer></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/js/typed.js"></script>
+    <script>
+      $(function(){
+          $("#maininput").typed({
+            strings: ["hike", "picnic", "run", "bike", ""],
+            typeSpeed: 0,
+            showCursor: true,
+            cursorChar: "|"
+          });
+      });
+    </script>
   </body>
 </html>
