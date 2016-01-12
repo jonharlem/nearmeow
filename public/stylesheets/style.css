@@ -1,4 +1,5 @@
 html, body {
+	background-color: #FFAD2B;
  	height: 100%;
  	margin: 0;
  	padding: 0;
@@ -9,20 +10,22 @@ html, body {
  	height: 100%;
 }
 
-.overlay {
+/*.overlay {
 	position:absolute;
 	z-index: 99;
-}
+}*/
 
 a {
 	color:white;
-
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 1.25em;
 }
 
 #navbar {
 	width:100%;
 	height: 50px;
-	background-color: rgba(62,105,144,0.9);
+	background-color: #FFAD2B;
 	display: flex;
 	justify-content: space-between;
 	align-items:center;
@@ -36,9 +39,6 @@ a {
 	letter-spacing: 1px;
 }
 
-#quote {
-    font-style: italic;
-}
 
 #logo {
 	top:60px;
@@ -62,19 +62,12 @@ a {
 	box-shadow: 0 0 100px #b3d1ff;
 }
 
-
-#inputlabel {
-	font-size: 350%;
-	color: white;
-	margin:10px 0 10px 20px;
-}
-
 #maininput {
-	font-size:350%;
+	font-size:100%;
 	text-align: center;
 	background: none;
     margin:10px;
-    color:white;
+    color:#4A4A4A;
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -109,3 +102,12 @@ a {
     100% { opacity:1; }
 }
 
+#slogan {
+	padding: 20px;
+	margin-top: 15%;
+	font-size: 350%;
+	font-weight: 400;
+	color: white;
+	letter-spacing: 1px;
+	text-align: center;
+}
