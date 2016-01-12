@@ -1,12 +1,3 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-*/
 html, body {
  	height: 100%;
  	margin: 0;
@@ -18,25 +9,54 @@ html, body {
  	height: 100%;
 }
 
-#logo {
+.overlay {
 	position:absolute;
-	top:30px;
-	left:30px;
+	z-index: 99;
+}
+
+a {
+	color:white;
+
+}
+
+#navbar {
+	width:100%;
+	height: 50px;
+	background-color: rgba(62,105,144,0.9);
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+#navbar > div {
+	padding:0 20px 0 20px;
+	color:white;
+	font-size:110%;
+	font-weight: lighter;
+	letter-spacing: 1px;
+}
+
+#quote {
+    font-style: italic;
+}
+
+#logo {
+	top:60px;
+	left:10px;
 	width:100px;
 	height:100px;
-	z-index: 98;
 	font-size: 250%;
 	font-weight: bolder;
 	line-height: 65%;
-	color: #3E6990;
+	color: rgba(62,105,144,1);
+	text-shadow:0 0 10px rgba(255,255,255,0.3);
+	letter-spacing: 1px;
 }
 
 #searchbar {
-	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 99;
 	background-color: #F39B6D;
 	border-radius: 4px;
 	box-shadow: 0 0 100px #b3d1ff;
