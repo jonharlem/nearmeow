@@ -23,14 +23,12 @@ router.get('/instagram/callback', function(req, res) {
     if (error) {
       console.log('error', response.statusCode)
     } else {
-      console.log('response', response.body);
+      process.env.ACCESS_TOKEN = response.body;
       // console.log('body', body);
       res.redirect('/');
     };
   });
 });
-
-
 
 // router.get('/logout', function(req, res){
 //   req.logout();
