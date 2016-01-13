@@ -106,13 +106,31 @@ a {
 	background-color: #D28F24;
 }
 
+#howButton:focus {
+	outline: none;
+}
+
 #how-it-works {
 	color: #1CA781;
 	height: 400px;
 }
 
-#closeHow {
-	text-align: right;
-	width: 100%;
+#hide {
+	margin-left: 90%;
+	font-size: 1.25em;
+	color: white;
+	border: 0;
+	background-color: #FFAD2B;
+	position:absolute;
+  top:5px;
+  right:20px;
+}
+
+#hide:focus {
+	outline: none;
+}
+
+#hide:hover {
+	color: #D28F24;
 }
 
