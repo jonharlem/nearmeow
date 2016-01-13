@@ -135,13 +135,12 @@ function initMap() {
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br>' + place.id + '<br>' + '<button id="submit">Click to Submit</button>');
     infowindow.open(map, marker);
     $('#submit').click(function() {
-      console.log('place', place);
       $.ajax({
         method: "POST",
         url: '/vote',
         data: {data: JSON.stringify(place)},
-      }).done(function(something){
-        console.log('done', something);
+      }).done(function(){
+        console.log('successful ajax request');
       });
     })
   });
