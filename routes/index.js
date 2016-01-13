@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
   	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 });
 
+
 router.post('/vote', function(req, res, next) {
 	var gPlaceId = JSON.parse(req.body.data).id;
 	
@@ -22,6 +23,14 @@ router.post('/vote', function(req, res, next) {
 	// 	});
 	// });
 });
+
+
+
+// router.get('/votes', function(req, res) {
+// 	var currentDate = Date.now().get
+// 	//knex('votes').whereBetween('timestamp', [,Date.now()])
+// });
+
 
 router.get('/recent', function(req, res, next) {
 	//'https://api.instagram.com/v1/media/search?lat=48.858844&lng=2.294351&access_token=process.env. '
