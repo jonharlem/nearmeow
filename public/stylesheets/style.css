@@ -66,8 +66,8 @@ a {
 	font-size:100%;
 	text-align: center;
 	background: none;
-    margin:10px;
-    color:#4A4A4A;
+  margin: 10px;
+  color: #4A4A4A;
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -79,35 +79,31 @@ a {
 */	outline: none;
 }
 
-
-.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-
 #slogan {
 	padding: 20px;
-	margin-top: 15%;
-	font-size: 350%;
+	margin-top: 10%;
+	font-size: 4em;
 	font-weight: 400;
 	color: white;
 	letter-spacing: 1px;
 	text-align: center;
 }
+
+#howButton {
+	font-size: 1.25em;
+	font-weight: 300;
+	color: white;
+	background-color: #FFD288;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	width: 150px;
+	height: 50px;
+	margin-left: 45%;
+	margin-right: 50%;
+}
+
+#howButton:hover {
+	background-color: #D28F24;
+}
+
