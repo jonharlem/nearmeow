@@ -11,6 +11,7 @@ require('dotenv').load();
 var routes = require('./routes/index');
 
 var app = express();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,8 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
-  keys: ['aKey']
+  keys: [process.env.SESSION_COOKIE]
 }));
+
+// app.use(function(req, res, next) {
+//   req.sessionOptions.expires = Date.now().getDate() + 1
+// });
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -43,22 +49,12 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    console.log(err.message, err);
     res.render('error', {
       message: err.message,
       error: err
     });
   });
 }
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-
 
 module.exports = app;
