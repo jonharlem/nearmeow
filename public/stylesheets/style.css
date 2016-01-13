@@ -39,7 +39,6 @@ a {
 	letter-spacing: 1px;
 }
 
-
 #logo {
 	top:60px;
 	left:10px;
@@ -105,5 +104,15 @@ a {
 
 #howButton:hover {
 	background-color: #D28F24;
+}
+
+#how-it-works {
+	color: #1CA781;
+	height: 400px;
+}
+
+#closeHow {
+	text-align: right;
+	width: 100%;
 }
 

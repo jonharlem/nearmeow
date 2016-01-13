@@ -5,19 +5,28 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <div style="margin-top: 0px">
-      <div id="navbar" class="overlay">
-        <div>
-          <a href="#">near meow</a>
-          <% if (user) { %>
-            <%= user %>
-          <% } %>
+    <!-- HIDDEN HOW TO SECTION -->
+    <div> 
+      <section id="how-it-works" >
+      <!-- close hidden how to section -->
+         <button id="hide">X</button>
+      </section>
+    </div>
+    <header>
+      <div style="margin-top: 0px">
+        <div id="navbar" class="overlay">
+          <div>
+            <a href="#">near meow</a>
+            <% if (user) { %>
+              <%= user %>
+            <% } %>
+          </div>
+          <div>
+            <a href="/about">about</a>
+          </div>
         </div>
-        <div>
-          <a href="/about">about</a>
-        </div>
-      </div>
-      <div id="slogan" class="middle">
+    </header>
+    <div id="slogan" class="middle">
         <span>The best </span> 
         <input id="maininput" size="8" value="" type="text">
         <span> near me now.<span>
@@ -26,17 +35,10 @@
         <button id="howButton">How It Works</button>
       </div>
     </div>
-    <!-- HIDDEN HOW TO SECTION -->
-    <div class="hide"> 
-      <section class="how-it-works" styl="top: -663px">
-      <!-- close hidden how to section -->
-        <a href="#">
-      </section>
-    </div>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="/js/typed.js"></script>
 <script>
-$(function(){
+  $(function(){
           $("#maininput").typed({
             strings: ["pizza^1000", "cafe^1000", "park^1000", "bike ride^1000", "bar^1000", "hike^1000", "bakery^1000", "cupcake^1000", "pub^1000", "food truck^1000", "dim sum^1000", "sandwich^1000", "museum^1000", "burger^1000", "club^1000", "pho^1000", "burrito^1000", "gym^1000", "karaoke^1000", "sushi^1000"],
             typeSpeed: 200,
@@ -44,7 +46,18 @@ $(function(){
             cursorChar: "|",
             loop: true
           });
-      });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#how-it-works").hide();
+    $("#howButton").click(function() {
+      $("#how-it-works").show(1000);
+    });
+    $("#hide").click(function(){
+        $("#how-it-works").hide(1000);
+    });
+  })
 </script>
   </body>
 </html>
