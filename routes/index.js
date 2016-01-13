@@ -8,18 +8,7 @@ router.get('/', function(req, res, next) {
   	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 });
 
-router.post('/', function(req, res, next) {
-	var place = req.body.place;
-	var user = //get user_id;
-	//make call to google place api or grab info form req.body
-	knex('places').insert({name: , google_place_id: , latitude: , longitude: })
-	.then(function(place){
-		knex('votes').insert({place_id: place.id, user_id: user, timestamp: Date.now()})
-		.then(function(){
-			res.redirect('/votes');
-		});
-	});
-});
+
 
 // router.get('/votes', function(req, res) {
 // 	var currentDate = Date.now().get
