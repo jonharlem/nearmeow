@@ -8,13 +8,16 @@ router.get('/', function(req, res, next) {
   	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 });
 
+router.get('/places', function(req, res, next) {
+	res.render('places', { gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
+});
+
 router.post('/vote', function(req, res, next) {
 	var data = JSON.parse(req.body.data),
 		gPlaceId = data.id,
 		gPlaceName = data.name,
 		gPlaceLat = data.geometry.location.lat,
 		gPlaceLng = data.geometry.location.lng;
-	console.log('id',gPlaceId);
 	res.redirect(301, '/');
 	//var user = //get user_id;
 	// knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:gPlaceLat, longitude:gPlaceLng})
@@ -25,6 +28,8 @@ router.post('/vote', function(req, res, next) {
 	// 	// });
 	// });
 });
+
+
 
 
 // router.get('/votes', function(req, res) {
