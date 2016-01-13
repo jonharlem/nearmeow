@@ -1,6 +1,6 @@
 html, body {
 	background-color: #FFAD2B;
- 	height: 100%;
+ 	height: 5000px;
  	margin: 0;
  	padding: 0;
  	position:relative;
@@ -39,17 +39,12 @@ a {
 	letter-spacing: 1px;
 }
 
-#logo {
-	top:60px;
-	left:10px;
-	width:100px;
-	height:100px;
-	font-size: 250%;
-	font-weight: bolder;
-	line-height: 65%;
-	color: rgba(62,105,144,1);
-	text-shadow:0 0 10px rgba(255,255,255,0.3);
-	letter-spacing: 1px;
+#nearMeow:hover {
+	color: #4A4A4A;
+}
+
+#about:hover {
+	color: #4A4A4A;
 }
 
 #searchbar {
@@ -131,6 +126,6 @@ a {
 }
 
 #hide:hover {
-	color: #D28F24;
+	color: #4A4A4A;
 }
 

@@ -9,20 +9,24 @@
     <div> 
       <section id="how-it-works" >
       <!-- close hidden how to section -->
-         <button id="hide">X</button>
+        <button id="hide">X</button>
+
+        <div class="wrapper">
+          
+        </div>
       </section>
     </div>
     <header>
       <div style="margin-top: 0px">
         <div id="navbar" class="overlay">
           <div>
-            <a href="#">near meow</a>
+            <a  id="nearMeow" href="#">near meow</a>
             <% if (user) { %>
               <%= user %>
             <% } %>
           </div>
           <div>
-            <a href="/about">about</a>
+            <a id="about" href="/about">about</a>
           </div>
         </div>
     </header>
@@ -50,13 +54,35 @@
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
+    $('#how-it-works').attr('data-hidden', true);
     $("#how-it-works").hide();
     $("#howButton").click(function() {
       $("#how-it-works").show(1000);
+      
     });
+
+    $('#how-it-works').attr('data-hidden', true);
+
+    $(window).scroll( function(){
+      /* Check the location of each desired element */
+        $('#how-it-works').each(function(i){
+
+          var top_of_window = $(window).scrollTop();
+
+          /* If the object is completely visible in the window, fade it in */
+          if(top_of_window > 400 ){
+            $(this).hide();
+            $(window).scrollTop(0);
+          }
+
+        }); 
+
+      });
     $("#hide").click(function(){
         $("#how-it-works").hide(1000);
     });
+    /* Every time the window is scrolled ... */
+
   })
 </script>
   </body>
