@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 require('dotenv').load();
+var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,15 +19,16 @@ router.post('/vote', function(req, res, next) {
 		gPlaceName = data.name,
 		gPlaceLat = data.geometry.location.lat,
 		gPlaceLng = data.geometry.location.lng;
+		// console.log(req.body.data);
 	res.redirect(301, '/');
 	//var user = //get user_id;
-	// knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:gPlaceLat, longitude:gPlaceLng})
-	// .then(function(place){
-	// 	// knex('votes').insert({place_id: place.id, user_id: user, timestamp: Date.now()})
-	// 	// .then(function(){
-	// 		res.end();
-	// 	// });
-	// });
+	knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:gPlaceLat, longitude:gPlaceLng})
+	.then(function(place){
+		// knex('votes').insert({place_id: place.id, user_id: user, timestamp: Date.now()})
+		// .then(function(){
+			res.end();
+		// });
+	});
 });
 
 
