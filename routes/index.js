@@ -44,8 +44,9 @@ router.post('/vote', function(req, res, next) {
 				votes.forEach(function(vote) {
 					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude)});
 				});
-				// res.send(votedOnPlaces);
-				res.end();
+				console.log('res', res);
+				res.send(votedOnPlaces);
+				// res.end();
 			});			
 		});
 	}).catch(function(err){

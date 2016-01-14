@@ -145,8 +145,10 @@ function initMap() {
         method: "POST",
         url: '/vote',
         data: {data: JSON.stringify(place)},
-      }).done(function(){
+      }).done(function(response){
         console.log('successful ajax request');
+        console.log('response', response);
+        var votes = response;
         //add marker waterfall here
   //       var votes = [ { lat: 37.7314, lng: -122.4759 },
   // { lat: 37.7395, lng: -122.4686 },
