@@ -1,6 +1,5 @@
 html, body {
 	background-color: #FFAD2B;
- 	height: 5000px;
  	margin: 0;
  	padding: 0;
  	position:relative;
@@ -47,16 +46,17 @@ a {
 	color: #4A4A4A;
 }
 
-#searchbar {
+/*#searchbar {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #F39B6D;
 	border-radius: 4px;
 	box-shadow: 0 0 100px #b3d1ff;
-}
+}*/
 
 #maininput {
+
 	font-size:100%;
 	text-align: center;
 	background: none;
@@ -66,6 +66,7 @@ a {
 	border-left: none;
 	border-right: none;
 	border-bottom: 5px solid white;
+	width: 250px;
 }
 
 #maininput:focus {
@@ -129,3 +130,49 @@ a {
 	color: #4A4A4A;
 }
 
+#lower-banner {
+	background-color: rgba(29, 29, 29, 0.5);
+	height: 170px;
+	width: 100%;
+	bottom: 0;
+	right: 0;
+	margin: none;
+	padding: none;
+	position: fixed;
+}
+
+#question {
+	font-size: 2em;
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+
+input {
+	width: 200px;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: .7em;
+}
+
+#voteButton {
+	font-size: .8em;
+	font-weight: 400;
+	color: white;
+	background-color: #1EAAC5;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	width: 150px;
+	height: 50px;
+	margin-left: 45%;
+	margin-right: 50%;
+}
+
+#voteButton:hover {
+	color: #4A4A4A;
+}
+
+#voteButton:focus {
+	outline: none;
+}
