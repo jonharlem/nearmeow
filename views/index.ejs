@@ -58,21 +58,22 @@
     $("#how-it-works").hide();
     $("#howButton").click(function() {
       $("#how-it-works").show(1000);
-      
+      $('#how-it-works').attr('data-hidden', false);
     });
 
-    $('#how-it-works').attr('data-hidden', true);
+   
 
     $(window).scroll( function(){
-      /* Check the location of each desired element */
+      /* Check the location of the element */
         $('#how-it-works').each(function(i){
 
           var top_of_window = $(window).scrollTop();
 
           /* If the object is completely visible in the window, fade it in */
-          if(top_of_window > 400 ){
+          if(top_of_window > 400 && $('#how-it-works').attr('data-hidden')==='false'){
             $(this).hide();
             $(window).scrollTop(0);
+            $('#how-it-works').attr('data-hidden', true);
           }
 
         }); 
