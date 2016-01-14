@@ -1,15 +1,24 @@
 var express = require('express');
 var router = express.Router();
 require('dotenv').load();
+var knex = require('../db/knex.js');
 
 /* GET home page. */
+
 router.get('/', function(req, res, next) {
 	res.locals.user = req.user || "";
-  	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
+	res.cookie('vote','true');
+	res.cookie('user', (new Date()).toString());
+	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 });
 
 router.get('/places', function(req, res, next) {
-	res.render('places', { gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
+	console.log('date', new Date());
+	knex('users').insert({user_name: req.cookies.user, password: '!!!pass$%#'})
+	.then(function(){
+		
+		res.render('places', {gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
+	});
 });
 
 router.post('/vote', function(req, res, next) {
@@ -17,19 +26,49 @@ router.post('/vote', function(req, res, next) {
 		gPlaceId = data.id,
 		gPlaceName = data.name,
 		gPlaceLat = data.geometry.location.lat,
-		gPlaceLng = data.geometry.location.lng;
-	res.redirect(301, '/');
-	//var user = //get user_id;
-	// knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:gPlaceLat, longitude:gPlaceLng})
-	// .then(function(place){
-	// 	// knex('votes').insert({place_id: place.id, user_id: user, timestamp: Date.now()})
-	// 	// .then(function(){
-	// 		res.end();
-	// 	// });
-	// });
+		gPlaceLng = data.geometry.location.lng,
+		user = req.cookies.user;
+	knex('users').where({user_name: user})
+	.then(function(result) {
+		var currentUser = result[0].id;
+		knex('places').where({google_place_id: gPlaceId})
+		.then(function(result) {
+			if(result.length > 0) {
+				addVote(gPlaceId, currentUser)
+			} else {
+				addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
+			}
+			knex('votes').join('places', 'votes.place_id', '=', 'places.id')
+			.select('latitude', 'longitude', 'google_place_id').then(function(votes) {
+				var votedOnPlaces = [];
+				votes.forEach(function(vote) {
+					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
+				});
+				console.log('votedOnPlaces', votedOnPlaces);
+				res.send(votedOnPlaces);
+				// res.end();
+			});			
+		});
+	}).catch(function(err){
+		console.log('error', err.stack);
+	});	
 });
 
+function addPlaceAndVote(gPlaceName, gPlaceId, lat, lng, currentUser) {
+	knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:lat, longitude:lng})
+	.then(function(){
+		addVote(gPlaceId, currentUser);
+	});
+}
 
+function addVote(gPlaceId, currentUser) {
+	knex('places').where({google_place_id: gPlaceId})
+	.then(function(result) {
+		var currentPlace = result[0].id;
+		knex('votes').insert({place_id: currentPlace, user_id: currentUser , date: new Date()})
+		.then(function(){});
+	});
+}
 
 
 // router.get('/votes', function(req, res) {

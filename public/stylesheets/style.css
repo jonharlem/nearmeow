@@ -1,28 +1,26 @@
 html, body {
- 	height: 100%;
+	background-color: #FFAD2B;
  	margin: 0;
  	padding: 0;
  	position:relative;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-#map {
- 	height: 100%;
-}
 
-.overlay {
-	position:absolute;
-	z-index: 99;
+#homepage {
+	/*height: 100vh*/;
 }
 
 a {
 	color:white;
-
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 1.25em;
 }
 
 #navbar {
 	width:100%;
 	height: 50px;
-	background-color: rgba(62,105,144,0.9);
+	background-color: #FFAD2B;
 	display: flex;
 	justify-content: space-between;
 	align-items:center;
@@ -36,49 +34,35 @@ a {
 	letter-spacing: 1px;
 }
 
-#quote {
-    font-style: italic;
+#nearMeow:hover {
+	color: #4A4A4A;
 }
 
-#logo {
-	top:60px;
-	left:10px;
-	width:100px;
-	height:100px;
-	font-size: 250%;
-	font-weight: bolder;
-	line-height: 65%;
-	color: rgba(62,105,144,1);
-	text-shadow:0 0 10px rgba(255,255,255,0.3);
-	letter-spacing: 1px;
+#about:hover {
+	color: #4A4A4A;
 }
 
-#searchbar {
+/*#searchbar {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #F39B6D;
 	border-radius: 4px;
 	box-shadow: 0 0 100px #b3d1ff;
-}
-
-
-#inputlabel {
-	font-size: 350%;
-	color: white;
-	margin:10px 0 10px 20px;
-}
+}*/
 
 #maininput {
-	font-size:350%;
+
+	font-size:100%;
 	text-align: center;
 	background: none;
-    margin:10px;
-    color:white;
+  margin: 10px;
+  color: #4A4A4A;
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom: 5px solid white;
+	width: 300px;
 }
 
 #maininput:focus {
@@ -86,29 +70,107 @@ a {
 */	outline: none;
 }
 
-
-.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+#slogan {
+	padding: 20px;
+	margin-top: 10%;
+	font-size: 4em;
+	font-weight: 400;
+	color: white;
+	letter-spacing: 1px;
+	text-align: center;
 }
 
+#howButton {
+	font-size: 1.25em;
+	font-weight: 300;
+	color: white;
+	background-color: #FFD288;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	width: 150px;
+	height: 50px;
+	margin-left: 45%;
+	margin-right: 50%;
+}
+
+#howButton:hover {
+	background-color: #D28F24;
+}
+
+#howButton:focus {
+	outline: none;
+}
+
+#how-it-works {
+	color: #1CA781;
+	height: 400px;
+}
+
+#hide {
+	margin-left: 90%;
+	font-size: 1.25em;
+	color: white;
+	border: 0;
+	background-color: #FFAD2B;
+	position:absolute;
+  top:5px;
+  right:20px;
+}
+
+#hide:focus {
+	outline: none;
+}
+
+#hide:hover {
+	color: #4A4A4A;
+}
+
+#lower-banner {
+	background-color: rgba(10, 10, 10, 0.5);
+	width: 100%;
+	right: 0;
+	margin: none;
+	padding: none;
+	/*margin: none;*/
+}
+
+#question {
+	font-size: 2em;
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+
+input {
+	width: 200px;
+	padding-left: 10px;
+	font-size: .7em;
+}
+
+#voteButton {
+	font-size: .8em;
+	font-weight: 400;
+	color: white;
+	background-color: #1EAAC5;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	width: 150px;
+	height: 40px;
+}
+
+#voteButton:hover {
+	color: #4A4A4A;
+}
+
+#voteButton:focus {
+	outline: none;
+}
+
+#map-view {
+	height: 100vh;
+}
 
 #pac-input {
   background-color: #fff;
