@@ -133,9 +133,14 @@ function initMap() {
       ].join(' ');
     }
     //console.log(place);
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br>' + place.id + '<br>' + '<button id="submit">Click to Submit</button>');
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br><br>' + '<button id="submit">Click to Vote!</button>');
     infowindow.open(map, marker);
-    $('#submit').click(function() {
+
+    var submitButton = $('#submit');  
+    submitButton.attr('hidden', false);
+    submitButton.click(function() {
+      submitButton.hide();
+      submitButton.attr('hidden', true);
       $.ajax({
         method: "POST",
         url: '/vote',
