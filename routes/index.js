@@ -38,7 +38,8 @@ router.post('/vote', function(req, res, next) {
 			} else {
 				addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
 			}
-			res.redirect('/');
+			// res.redirect('/');
+			res.end();
 		}).catch(function(err){
 				console.log('error', err.stack);
 		});		
