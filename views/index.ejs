@@ -39,8 +39,8 @@
       </div>
     </div>
 
-    <div id="lower-banner">
-      <p id="question">My favorite <span>cupcake</span> in <span>San Francisco</span> is <input type="text" name="location">  <button id="voteButton">VOTE</button></p>
+    <div id="lower-banner" style="position: absolute; bottom: 0; height: 170px;" >
+      <p id="question">My favorite <span>pizza</span> in <span>San Francisco</span> is <input type="text" name="location">  <button id="voteButton">VOTE</button></p>
     </div>
 
   </div>
@@ -78,7 +78,13 @@
       $('#how-it-works').attr('data-hidden', false);
     });
 
-   
+    $("#voteButton").click(function() {
+      $("#homepage").hide(1000);
+      $("#map-view").show(1000);
+      $("#lower-banner").css("bottom", "").css("height", "100px").css
+
+      $("#lower-banner").prependTo("#map-view");
+    })
 
     $(window).scroll( function(){
       /* Check the location of the element */
@@ -99,7 +105,8 @@
     $("#hide").click(function(){
         $("#how-it-works").hide(1000);
     });
-    /* Every time the window is scrolled ... */
+
+
 
   })
 </script>

@@ -62,7 +62,7 @@ a {
 	border-left: none;
 	border-right: none;
 	border-bottom: 5px solid white;
-	width: 250px;
+	width: 300px;
 }
 
 #maininput:focus {
@@ -128,12 +128,11 @@ a {
 
 #lower-banner {
 	background-color: rgba(10, 10, 10, 0.5);
-	height: 170px;
 	width: 100%;
 	right: 0;
 	margin: none;
 	padding: none;
-	position: absolute; bottom: 0;
+	/*position: absolute; bottom: 0;*/
 }
 
 #question {
@@ -173,5 +172,5 @@ input {
 }
 
 #map-view {
-	/*height: 100vh;*/
+	height: 100vh;
 }
