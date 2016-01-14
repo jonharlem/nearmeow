@@ -23,10 +23,17 @@ router.get('/category', function(req, res) {
 router.post('/category/new', function(req, res) {
 	var category = req.body.newCategory;
 	//create duplicate control: if already present, don't add...
-	knex('categories').insert({name:category, featured: false})
-	.then(function(){
-		res.redirect('/');
-	});
+	knex('categories').where({name:category})
+	.then(function(result) {
+		if (result.length > 0) {
+			res.redirect('/');
+		} else {
+			knex('categories').insert({name:category, featured: false})
+			.then(function(){
+				res.redirect('/');
+			});
+		}
+	})
 });
 
 router.post('/category/today', function(req, res) {
