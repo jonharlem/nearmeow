@@ -78,10 +78,37 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
 function initMap() {
+  var styleArray = [{
+    "featureType": "administrative",
+    "elementType": "labels",
+    "stylers": [{"visibility": "on"}]
+    }, {
+    "featureType": "landscape",
+    "elementType": "all",
+    "stylers": [{"visibility": "on"}]
+    }, {
+    "featureType": "poi",
+    "elementType": "labels",
+    "stylers": [{"visibility": "off"}]
+    }, {
+    "featureType": "road",
+    "elementType": "all",
+    "stylers": [{"visibility": "simplified"},
+                {"lightness": "45"}]
+    }, {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [{"visibility": "off"}]
+    }, {
+    "featureType": "transit",
+    "elementType": "all",
+    "stylers": [{"visibility": "off"}]
+    }];
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 37.783, lng: -122.416},
     zoom: 13,
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    styles: styleArray
   });
   var input = /** @type {!HTMLInputElement} */(document.getElementById('pac-input'));
   var types = document.getElementById('type-selector');
