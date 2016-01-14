@@ -38,10 +38,18 @@ router.post('/vote', function(req, res, next) {
 			} else {
 				addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
 			}
-			res.redirect('/');
-		}).catch(function(err){
-				console.log('error', err.stack);
-		});		
+			knex('votes').join('places', 'votes.place_id', '=', 'places.id')
+			.select('latitude', 'longitude').then(function(votes) {
+				var votedOnPlaces = [];
+				votes.forEach(function(vote) {
+					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude)});
+				});
+				// res.send(votedOnPlaces);
+				res.end();
+			});			
+		});
+	}).catch(function(err){
+		console.log('error', err.stack);
 	});	
 });
 
