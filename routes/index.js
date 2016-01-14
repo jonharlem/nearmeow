@@ -39,12 +39,12 @@ router.post('/vote', function(req, res, next) {
 				addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
 			}
 			knex('votes').join('places', 'votes.place_id', '=', 'places.id')
-			.select('latitude', 'longitude').then(function(votes) {
+			.select('latitude', 'longitude', 'google_place_id').then(function(votes) {
 				var votedOnPlaces = [];
 				votes.forEach(function(vote) {
-					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude)});
+					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
 				});
-				console.log('res', res);
+				console.log('votedOnPlaces', votedOnPlaces);
 				res.send(votedOnPlaces);
 				// res.end();
 			});			
