@@ -3,7 +3,6 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 // var InstagramStrategy = require('passport-instagram').Strategy;
 require('dotenv').load();
@@ -22,16 +21,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: [process.env.SESSION_COOKIE]
-}));
-
-// app.use(function(req, res, next) {
-//   req.sessionOptions.expires = Date.now().getDate() + 1
-// });
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(function(req, res, next) {
+  //if (req.cookies.vote) {
+    next();
+  //} 
+  //else {
+  //   res.redirect('/');
+  // }
+});
 
 app.use('/', routes);
 
