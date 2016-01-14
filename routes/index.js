@@ -9,7 +9,47 @@ router.get('/', function(req, res, next) {
 	res.locals.user = req.user || "";
 	res.cookie('vote','true');
 	res.cookie('user', (new Date()).toString());
-	res.render('index', { title: 'Login', gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
+	knex('categories').where({featured: true})
+	.then(function(result) {
+		var category = result[0].name;
+		res.render('index', { title: 'Login', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
+	});
+});
+
+router.get('/category', function(req, res) {
+	res.render('category');
+});
+
+router.post('/category/new', function(req, res) {
+	var category = req.body.newCategory;
+	//create duplicate control: if already present, don't add...
+	knex('categories').where({name:category})
+	.then(function(result) {
+		if (result.length > 0) {
+			res.redirect('/');
+		} else {
+			knex('categories').insert({name:category, featured: false})
+			.then(function(){
+				res.redirect('/');
+			});
+		}
+	})
+});
+
+router.post('/category/today', function(req, res) {
+	var category = req.body.todaysCategory;
+	console.log(category);
+	knex('categories').where({featured: true})
+	.then(function(result) {
+		var selection = result[0].id;
+		knex('categories').where({id: selection}).update({featured: false})
+		.then(function(){
+			knex('categories').where({name:category}).update({featured: true})
+			.then(function(){
+				res.redirect('/');
+			});
+		});
+	});
 });
 
 router.get('/places', function(req, res, next) {
