@@ -155,19 +155,14 @@
         var image = {
           url: 'cat.png',
           // This marker is 20 pixels wide by 32 pixels high.
-          size: new google.maps.Size(118, 197),
+          size: new google.maps.Size(30, 53),
           // The origin for this image is (0, 0).
-          origin: new google.maps.Point(0, 0),
+          origin: new google.maps.Point(0, 0)
           // The anchor for this image is the base of the flagpole at (0, 32).
-          anchor: new google.maps.Point(0, 32)
         };
         // Shapes define the clickable region of the icon. The type defines an HTML
         // <area> element 'poly' which traces out a polygon as a series of X,Y points.
         // The final coordinate closes the poly by connecting to the first coordinate.
-        var shape = {
-          coords: [1, 1, 1, 20, 18, 20, 18, 1],
-          type: 'poly'
-        };
               function drop() {
                 for (var i = 0; i < votes.length; i++) {
                   addMarkerWithTimeout(votes[i], i * 100);
@@ -179,8 +174,7 @@
                     position: position,
                     map: map,
                     animation: google.maps.Animation.DROP,
-                    icon:image,
-                    shape:shape
+                    icon:image
                   }));
                 }, timeout);
               }
