@@ -90,7 +90,7 @@ a {
 	border-radius: 5px;
 	width: 150px;
 	height: 50px;
-	margin-left: 45%;
+	margin-left: 43%;
 	margin-right: 50%;
 	
 }
@@ -143,12 +143,6 @@ a {
 	width: 100%;
 }
 
-input {
-	width: 200px;
-	padding-left: 10px;
-	font-size: .7em;
-}
-
 #voteButton {
 	font-size: .8em;
 	font-weight: 400;
@@ -171,6 +165,26 @@ input {
 
 #map-view {
 	height: 100vh;
+}
+
+/*GOOGLE MAP*/
+
+#map {
+height: 800px;
+position: fixed;
+bottom: 0;
+clear: both;
+margin-top: 100px;
+}
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 #pac-input {
@@ -202,3 +216,4 @@ input {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
+}
