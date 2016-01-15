@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 	res.cookie('user', (new Date()).toString());
 	knex('categories').where({featured: true})
 	.then(function(result) {
+		console.log(result);
 		var category = result[0].name;
 		res.render('index', { title: 'Login', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 	});
@@ -38,19 +39,30 @@ router.post('/category/new', function(req, res) {
 
 router.post('/category/today', function(req, res) {
 	var category = req.body.todaysCategory;
-	console.log(category);
 	knex('categories').where({featured: true})
 	.then(function(result) {
-		var selection = result[0].id;
-		knex('categories').where({id: selection}).update({featured: false})
-		.then(function(){
-			knex('categories').where({name:category}).update({featured: true})
-			.then(function(){
-				res.redirect('/');
-			});
-		});
+		if (result.length > 0) {
+			var selection = result[0].id;
+			setFeaturedCategory(category, selection, res);
+		} else {
+			setFeaturedTrue(category, res);
+		}
 	});
 });
+
+function setFeaturedCategory (category, selection, res) {
+	knex('categories').where({id: selection}).update({featured: false})
+	.then(function(){
+		setFeaturedTrue(category, res);
+	});
+};
+
+function setFeaturedTrue (category, res) {
+	knex('categories').where({name:category}).update({featured: true})
+	.then(function(){
+		res.redirect('/');
+	});
+};
 
 router.get('/places', function(req, res, next) {
 	console.log('date', new Date());
