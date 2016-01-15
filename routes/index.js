@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 	res.cookie('user', (new Date()).toString());
 	knex('categories').where({featured: true})
 	.then(function(result) {
-		console.log(result);
 		var category = result[0].name;
 		res.render('index', { title: 'Login', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 	});
@@ -23,7 +22,6 @@ router.get('/category', function(req, res) {
 
 router.post('/category/new', function(req, res) {
 	var category = req.body.newCategory;
-	//create duplicate control: if already present, don't add...
 	knex('categories').where({name:category})
 	.then(function(result) {
 		if (result.length > 0) {
@@ -65,7 +63,6 @@ function setFeaturedTrue (category, res) {
 };
 
 router.get('/places', function(req, res, next) {
-	console.log('date', new Date());
 	knex('users').insert({user_name: req.cookies.user, password: '!!!pass$%#'})
 	.then(function(){
 		res.render('places', {gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
@@ -74,12 +71,11 @@ router.get('/places', function(req, res, next) {
 
 router.post('/vote', function(req, res, next) {
 	var data = JSON.parse(req.body.data),
-		gPlaceId = data.id,
+		gPlaceId = data.place_id,
 		gPlaceName = data.name,
 		gPlaceLat = data.geometry.location.lat,
 		gPlaceLng = data.geometry.location.lng,
 		user = req.cookies.user;
-		// console.log('data lat', data.geometry.location.lat);
 	knex('users').where({user_name: user})
 	.then(function(result) {
 		var currentUser = result[0].id;
@@ -105,7 +101,6 @@ router.post('/vote', function(req, res, next) {
 });
 
 function addPlaceAndVote(gPlaceName, gPlaceId, lat, lng, currentUser) {
-	console.log('more stuff', gPlaceName, gPlaceId, lat, lng, currentUser)
 	knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:lat, longitude:lng})
 	.then(function(){
 		addVote(gPlaceId, currentUser);
