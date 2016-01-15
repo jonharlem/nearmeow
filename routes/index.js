@@ -62,42 +62,39 @@ function setFeaturedTrue (category, res) {
 	});
 };
 
-router.get('/places', function(req, res, next) {
+router.post('/vote', function(req, res, next) {
 	knex('users').insert({user_name: req.cookies.user, password: '!!!pass$%#'})
 	.then(function(){
-		res.render('places', {gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
-	});
-});
-
-router.post('/vote', function(req, res, next) {
-	var data = JSON.parse(req.body.data),
-		gPlaceId = data.place_id,
-		gPlaceName = data.name,
-		gPlaceLat = data.geometry.location.lat,
-		gPlaceLng = data.geometry.location.lng,
-		user = req.cookies.user;
-	knex('users').where({user_name: user})
-	.then(function(result) {
-		var currentUser = result[0].id;
-		knex('places').where({google_place_id: gPlaceId})
+		var data = JSON.parse(req.body.data),
+			gPlaceId = data.place_id,
+			gPlaceName = data.name,
+			gPlaceLat = data.geometry.location.lat,
+			gPlaceLng = data.geometry.location.lng,
+			user = req.cookies.user;
+			console.log('user', user);
+		knex('users').where({user_name: user})
 		.then(function(result) {
-			if(result.length > 0) {
-				addVote(gPlaceId, currentUser)
-			} else {
-				addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
-			}
-			knex('votes').join('places', 'votes.place_id', '=', 'places.id')
-			.select('latitude', 'longitude', 'google_place_id').then(function(votes) {
-				var votedOnPlaces = [];
-				votes.forEach(function(vote) {
-					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
-				});
-				res.send(votedOnPlaces);
-			});			
-		});
-	}).catch(function(err){
-		console.log('error', err.stack);
-	});	
+			var currentUser = result[0].id;
+			knex('places').where({google_place_id: gPlaceId})
+			.then(function(result) {
+				if(result.length > 0) {
+					addVote(gPlaceId, currentUser)
+				} else {
+					addPlaceAndVote(gPlaceName, gPlaceId, gPlaceLat, gPlaceLng, currentUser);
+				}
+				knex('votes').join('places', 'votes.place_id', '=', 'places.id')
+				.select('latitude', 'longitude', 'google_place_id').then(function(votes) {
+					var votedOnPlaces = [];
+					votes.forEach(function(vote) {
+						votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
+					});
+					res.send(votedOnPlaces);
+				});			
+			});
+		}).catch(function(err){
+			console.log('error', err.stack);
+		});	
+	});
 });
 
 function addPlaceAndVote(gPlaceName, gPlaceId, lat, lng, currentUser) {
