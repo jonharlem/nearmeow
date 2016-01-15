@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 	res.cookie('user', (new Date()).toString());
 	knex('categories').where({featured: true})
 	.then(function(result) {
-		console.log(result);
 		var category = result[0].name;
 		res.render('index', { title: 'Login', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 	});
@@ -23,7 +22,6 @@ router.get('/category', function(req, res) {
 
 router.post('/category/new', function(req, res) {
 	var category = req.body.newCategory;
-	//create duplicate control: if already present, don't add...
 	knex('categories').where({name:category})
 	.then(function(result) {
 		if (result.length > 0) {
@@ -65,17 +63,15 @@ function setFeaturedTrue (category, res) {
 };
 
 router.get('/places', function(req, res, next) {
-	console.log('date', new Date());
 	knex('users').insert({user_name: req.cookies.user, password: '!!!pass$%#'})
 	.then(function(){
-		
 		res.render('places', {gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
 	});
 });
 
 router.post('/vote', function(req, res, next) {
 	var data = JSON.parse(req.body.data),
-		gPlaceId = data.id,
+		gPlaceId = data.place_id,
 		gPlaceName = data.name,
 		gPlaceLat = data.geometry.location.lat,
 		gPlaceLng = data.geometry.location.lng,
@@ -96,9 +92,7 @@ router.post('/vote', function(req, res, next) {
 				votes.forEach(function(vote) {
 					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
 				});
-				console.log('votedOnPlaces', votedOnPlaces);
 				res.send(votedOnPlaces);
-				// res.end();
 			});			
 		});
 	}).catch(function(err){
