@@ -68,7 +68,6 @@ router.get('/places', function(req, res, next) {
 	console.log('date', new Date());
 	knex('users').insert({user_name: req.cookies.user, password: '!!!pass$%#'})
 	.then(function(){
-		
 		res.render('places', {gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY});
 	});
 });
@@ -80,6 +79,7 @@ router.post('/vote', function(req, res, next) {
 		gPlaceLat = data.geometry.location.lat,
 		gPlaceLng = data.geometry.location.lng,
 		user = req.cookies.user;
+		// console.log('data lat', data.geometry.location.lat);
 	knex('users').where({user_name: user})
 	.then(function(result) {
 		var currentUser = result[0].id;
@@ -96,9 +96,7 @@ router.post('/vote', function(req, res, next) {
 				votes.forEach(function(vote) {
 					votedOnPlaces.push({lat: Number(vote.latitude), lng: Number(vote.longitude), gPlaceId: vote.google_place_id});
 				});
-				console.log('votedOnPlaces', votedOnPlaces);
 				res.send(votedOnPlaces);
-				// res.end();
 			});			
 		});
 	}).catch(function(err){
@@ -107,6 +105,7 @@ router.post('/vote', function(req, res, next) {
 });
 
 function addPlaceAndVote(gPlaceName, gPlaceId, lat, lng, currentUser) {
+	console.log('more stuff', gPlaceName, gPlaceId, lat, lng, currentUser)
 	knex('places').insert({name:gPlaceName, google_place_id:gPlaceId, latitude:lat, longitude:lng})
 	.then(function(){
 		addVote(gPlaceId, currentUser);
