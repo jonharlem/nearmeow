@@ -40,7 +40,7 @@
     </div>
 
     <div id="lower-banner" style="position: absolute; bottom: 0; height: 170px;" >
-      <p id="question" style="margin-top: 70px;" >My favorite <span><%= categoryName %></span> in <span>San Francisco</span> is <input id="pac-input" class="controls" type="text" placeholder="Enter a location"><button id="voteButton">VOTE</button></p>
+      <p id="question" style="margin-top: 40px;" >My favorite <span><%= categoryName %></span> in <span>San Francisco</span> is <input id="pac-input" class="controls" type="text" placeholder="Enter a location"><button id="voteButton">VOTE</button></p>
     </div>
 
   </div>
@@ -48,9 +48,9 @@
   <!-- MAP VIEW -->
   <div id="map-view">
     <div id="google-maps">
-          <div id="map"></div>
-          <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-          <script>
+      <div id="map"></div>
+
+    <script>
       function initMap() {
         var styleArray = [{
           "featureType": "administrative",
@@ -86,7 +86,6 @@
         });
         var input = /** @type {!HTMLInputElement} */(document.getElementById('pac-input'));
         var types = document.getElementById('type-selector');
-        // map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
@@ -190,7 +189,7 @@
   </div>
 
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=<% gmapsBrowserKey %>&libraries=places&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<% gmapsBrowserKey %>&libraries=places"></script>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="/js/typed.js"></script>
 <script>
@@ -216,15 +215,24 @@
       $('#how-it-works').attr('data-hidden', false);
     });
 
-    $("#voteButton").click(function() {
-      google.maps.event.trigger(map, 'resize');
-      $("#homepage").hide(1000);
-      $("#map-view").show();
-      $('#how-it-works').attr('data-hidden', false);
-      $("#lower-banner").css("bottom", "").css("height", "100px").css
-      $("#question").css("margin-top", "");
-      $("#lower-banner").prependTo("#map-view");
+    $("#pac-input").attr('can-search', false);
+
+    $("#pac-input").click(function() {
+      if($("#pac-input").attr('can-search') ==='false') {
+        initMap();
+        $("#homepage").hide(1000);
+        $('#how-it-works').attr('data-hidden', false);
+        $("#lower-banner").prependTo("#map-view");
+        
+        $("#map-view").show();
+        $("#lower-banner").css("bottom", "").css("height", "100px").css("position", "");
+        $("#question").css("margin-top", "");
+        $("#pac-input").attr('can-search', true);
+      }
+      
     })
+
+
 
     $(window).scroll( function(){
       /* Check the location of the element */
