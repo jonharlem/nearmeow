@@ -125,9 +125,9 @@
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br><br>' + '<button id="submit">Click to Vote!</button>');
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br><br>' + 'Click VOTE Button to Vote');
           infowindow.open(map, marker);
-          var submitButton = $('#submit');  
+          var submitButton = $('#voteButton');  
           submitButton.attr('hidden', false);
           submitButton.click(function() {
             submitButton.hide();
