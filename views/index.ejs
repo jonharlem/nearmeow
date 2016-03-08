@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body> 
@@ -9,6 +10,23 @@
     <div> 
       <section id="how-it-works" >
       <!-- close hidden how to section -->
+        <div id="howparent">
+          <div class="howchild">
+            <i class="fa fa-search fa-5x"></i>
+            <h1>search</h1>
+            <p>enter your choice</p>
+          </div>
+          <div class="howchild">
+            <i class="fa fa-check-circle-o fa-5x"></i>
+            <h1>vote</h1>
+            <p>submit your vote</p>
+          </div>
+          <div class="howchild">
+            <i class="fa fa-map-o fa-5x"></i>
+            <h1>see</h1>
+            <p>find out what everyone else thinks</p>
+          </div>
+        </div>
         <button id="hide">X</button>
       </section>
     </div>
@@ -222,6 +240,7 @@
         $("#lower-banner").css("bottom", "").css("height", "100px").css("position", "fixed").css("top", "0");
         $("#question").css("margin-top", "");
         $("#pac-input").attr('can-search', true);
+        // $("#pac-logo").css("top","0");
       }
       
     })

@@ -62,7 +62,7 @@ a {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 5px solid white;
+	border-bottom: 3px solid white;
 	width: 300px;
 }
 
@@ -106,7 +106,7 @@ a {
 }
 
 #how-it-works {
-	color: #1CA781;
+	color: #1EAAC5;
 	height: 400px;
 	background-color: 
 }
@@ -233,7 +233,7 @@ margin-top: 100px;
 
 .pac-container {
   font-family: Roboto;
-  /*top:-100px;*/
+  top:8px;
 }
 
 #type-selector {
@@ -246,4 +246,36 @@ margin-top: 100px;
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
+}
+
+#howparent {
+	/*margin-left:0;*/
+	/*margin-right:0;*/
+}
+
+.howchild {
+	float:left;
+	width:20%;
+	height:300px;
+	text-align:center;
+	margin:20px;
+	/*border: 1px solid black;*/
+}
+
+.howchild:first-child {
+	margin-left:200px;
+}
+
+.howchild h1 {
+	margin-top:0;
+	margin-bottom: 0;
+	font-size: 300%;
+}
+
+.howchild p {
+	color:white;
+}
+
+.fa {
+	margin-top:100px;
 }
