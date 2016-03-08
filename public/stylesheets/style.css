@@ -4,6 +4,7 @@ html, body {
  	padding: 0;
  	position:relative;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	min-height: 600px;
 }
 
 #homepage {
@@ -61,7 +62,7 @@ a {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 5px solid white;
+	border-bottom: 3px solid white;
 	width: 300px;
 }
 
@@ -81,22 +82,23 @@ a {
 }
 
 #howButton {
-	font-size: 1.25em;
-	font-weight: 300;
+	font-size: 1.5em;
+	font-weight: 400;
 	color: white;
 	background-color: #FFD288;
 	text-align: center;
 	border: none;
 	border-radius: 5px;
-	width: 150px;
-	height: 50px;
+	width: 180px;
+	height: 60px;
 	margin-left: 43%;
 	margin-right: 50%;
 	
 }
 
 #howButton:hover {
-	background-color: #D28F24;
+	/*background-color: #D28F24;*/
+	background-color: #4A4A4A;
 }
 
 #howButton:focus {
@@ -104,19 +106,21 @@ a {
 }
 
 #how-it-works {
-	color: #1CA781;
+	color: #1EAAC5;
 	height: 400px;
+	background-color: 
 }
 
 #hide {
-	margin-left: 90%;
-	font-size: 1.25em;
+	/*margin-left: 90%;*/
+	font-size: 1.4em;
+	font-weight: 700;
 	color: white;
 	border: 0;
 	background-color: #FFAD2B;
 	position:absolute;
-  top:5px;
-  right:20px;
+  top:20px;
+  right:24px;
 }
 
 #hide:focus {
@@ -128,7 +132,8 @@ a {
 }
 
 #lower-banner {
-	background-color: rgba(10, 10, 10, 0.5);
+	/*background-color: rgba(10, 10, 10, 0.5);*/
+	background-color: #4A4A4A;
 	width: 100%;
 	margin: none;
 	padding: none;
@@ -151,6 +156,7 @@ a {
 	border-radius: 5px;
 	width: 150px;
 	height: 40px;
+	letter-spacing: 2px;
 }
 
 #voteButton:hover {
@@ -175,15 +181,38 @@ clear: both;
 margin-top: 100px;
 }
 .controls {
-  margin-top: 10px;
+  margin-top: 8px;
   border: 1px solid transparent;
-  border-radius: 2px 0 0 2px;
+  border-radius: 4px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   height: 32px;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+::-webkit-input-placeholder {
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+:-moz-placeholder { /* older Firefox*/
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+::-moz-placeholder { /* Firefox 19+ */ 
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+} 
+:-ms-input-placeholder { 
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
 
 #pac-input {
   background-color: #fff;
@@ -204,6 +233,7 @@ margin-top: 100px;
 
 .pac-container {
   font-family: Roboto;
+  top:8px;
 }
 
 #type-selector {
@@ -216,4 +246,36 @@ margin-top: 100px;
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
+}
+
+#howparent {
+	/*margin-left:0;*/
+	/*margin-right:0;*/
+}
+
+.howchild {
+	float:left;
+	width:20%;
+	height:300px;
+	text-align:center;
+	margin:20px;
+	/*border: 1px solid black;*/
+}
+
+.howchild:first-child {
+	margin-left:200px;
+}
+
+.howchild h1 {
+	margin-top:0;
+	margin-bottom: 0;
+	font-size: 300%;
+}
+
+.howchild p {
+	color:white;
+}
+
+.fa {
+	margin-top:100px;
 }
