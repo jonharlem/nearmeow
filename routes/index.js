@@ -28,6 +28,7 @@ router.post('/category/new', function(req, res) {
 	
 	knex('categories').where({name:category})
 	.then(function(result) {
+		console.log(result);
 		if (result.length > 0) {
 			res.redirect('/');
 		} else {

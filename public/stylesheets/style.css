@@ -257,13 +257,14 @@ margin-top: 100px;
 	float:left;
 	width:20%;
 	height:300px;
+	width:300px;
 	text-align:center;
 	margin:20px;
 	/*border: 1px solid black;*/
 }
 
 .howchild:first-child {
-	margin-left:200px;
+	margin-left: calc(((100% - 1020px) / 2) - 5px);
 }
 
 .howchild h1 {
