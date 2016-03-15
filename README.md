@@ -1,5 +1,5 @@
 #NearMeow
-[Click to go to NearMeow](www.nearmeow.com)
+[Click to go to NearMeow](http://www.nearmeow.com)
 
 ##What
 Conceived as "the space between google and yelp", nearmeow.com allows users to vote on and see the best places, as rated by other users, that are nearby. In other words, it answers the question, "what's the best [insert place] that's near me now?".
