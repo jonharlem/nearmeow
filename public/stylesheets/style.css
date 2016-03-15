@@ -255,16 +255,16 @@ margin-top: 100px;
 
 .howchild {
 	float:left;
-	width:20%;
+	/*width:20%;*/
 	height:300px;
-	width:300px;
+	width:20%;
 	text-align:center;
-	margin:20px;
+	margin-left:10%;
 	/*border: 1px solid black;*/
 }
 
 .howchild:first-child {
-	margin-left: calc(((100% - 1020px) / 2) - 5px);
+	/*margin-left: calc(((100% - 1020px) / 2) - 5px);*/
 }
 
 .howchild h1 {
