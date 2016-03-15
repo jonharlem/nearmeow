@@ -1,23 +1,21 @@
-## nearmeow
-A visual reccomendation engine for popular local spots.
+#NearMeow
+[Click to go to NearMeow](www.nearmeow.com)
 
-- feels like magic
-- personalized
+##What
+Conceived as "the space between google and yelp", nearmeow.com allows users to vote on and see the best places, as rated by other users, that are nearby. In other words, it answers the question, "what's the best [insert place] that's near me now?".
 
-###Stack:
+##Stack:
 - Node.js
 - Express
 - PostgreSQL
 - PassportJS
 
-###APIs:
+##APIs:
 - Google Maps
-- Google Knowledge Map Search
-- Flickr
-- Instagram
-- Facebook (maybe)
+- Google Places
 
-###Challenges
-- filtering locations
-- UX
-- not reinventing google search
+##Future Features
+- Clicking a pin will show the details of the pinned location
+
+
+
