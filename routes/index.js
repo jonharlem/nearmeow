@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 	knex('categories').where({featured: true})
 	.then(function(result) {
 		var category = result[0].name;
-		res.render('index', { title: 'Login', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
+		res.render('index', { title: 'nearmeow', categoryName: category, gmapsBrowserKey: process.env.GMAPS_BROWSER_KEY, user: process.env.ACCESS_TOKEN});
 	});
 });
 
