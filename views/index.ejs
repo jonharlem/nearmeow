@@ -4,6 +4,66 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+  $(document).ready(function() {
+    $('#how-it-works').attr('data-hidden', true);
+    $("#how-it-works").hide();
+    $('#map-view').attr('data-hidden', true);
+    $("#map-view").hide();
+    $("#howButton").click(function() {
+      // $("#landing-wrapper").css({height:150%})
+      $("#how-it-works").show(1000);
+      $('#how-it-works').attr('data-hidden', false);
+    });
+
+    $("#pac-input").attr('can-search', false);
+
+    $("#pac-input").click(function() {
+      if($("#pac-input").attr('can-search') ==='false') {
+        initMap();
+        $("#homepage").hide(1000);
+        $('#how-it-works').attr('data-hidden', false);
+        $("#lower-banner").prependTo("#map-view");
+        
+        $("#map-view").show();
+        $("#lower-banner").css("bottom", "").css("height", "100px").css("position", "fixed").css("top", "0");
+        $("#question").css("margin-top", "");
+        $("#pac-input").attr('can-search', true);
+        // $("#pac-logo").css("top","0");
+      }
+      
+    })
+
+
+
+    $(window).scroll( function(){
+      /* Check the location of the element */
+        $('#how-it-works').each(function(i){
+
+          var top_of_window = $(window).scrollTop();
+
+          /* If the object is completely visible in the window, fade it in */
+          if(top_of_window > 395 && $('#how-it-works').attr('data-hidden')==='false'){
+            $(this).hide();
+            $(window).scrollTop(0);
+            $('#how-it-works').attr('data-hidden', true);
+          }
+
+        }); 
+
+      });
+    $("#hide").click(function(){
+        $("#how-it-works").hide(1000);
+    });
+
+
+
+  })
+
+  // $('#pac-container').css('position','top:-100px;')
+</script>
+
   </head>
   <body> 
     <!-- HIDDEN HOW TO SECTION -->
@@ -202,7 +262,6 @@
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<% gmapsBrowserKey %>&libraries=places"></script>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="/js/typed.js"></script>
 <script>
   $(function(){
@@ -215,63 +274,5 @@
           });
   });
 </script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#how-it-works').attr('data-hidden', true);
-    $("#how-it-works").hide();
-    $('#map-view').attr('data-hidden', true);
-    $("#map-view").hide();
-    $("#howButton").click(function() {
-      // $("#landing-wrapper").css({height:150%})
-      $("#how-it-works").show(1000);
-      $('#how-it-works').attr('data-hidden', false);
-    });
-
-    $("#pac-input").attr('can-search', false);
-
-    $("#pac-input").click(function() {
-      if($("#pac-input").attr('can-search') ==='false') {
-        initMap();
-        $("#homepage").hide(1000);
-        $('#how-it-works').attr('data-hidden', false);
-        $("#lower-banner").prependTo("#map-view");
-        
-        $("#map-view").show();
-        $("#lower-banner").css("bottom", "").css("height", "100px").css("position", "fixed").css("top", "0");
-        $("#question").css("margin-top", "");
-        $("#pac-input").attr('can-search', true);
-        // $("#pac-logo").css("top","0");
-      }
-      
-    })
-
-
-
-    $(window).scroll( function(){
-      /* Check the location of the element */
-        $('#how-it-works').each(function(i){
-
-          var top_of_window = $(window).scrollTop();
-
-          /* If the object is completely visible in the window, fade it in */
-          if(top_of_window > 395 && $('#how-it-works').attr('data-hidden')==='false'){
-            $(this).hide();
-            $(window).scrollTop(0);
-            $('#how-it-works').attr('data-hidden', true);
-          }
-
-        }); 
-
-      });
-    $("#hide").click(function(){
-        $("#how-it-works").hide(1000);
-    });
-
-
-
-  })
-
-  // $('#pac-container').css('position','top:-100px;')
-</script>
-  </body>
+</body>
 </html>

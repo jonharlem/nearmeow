@@ -106,9 +106,9 @@ a {
 }
 
 #how-it-works {
-	color: #1EAAC5;
+	color: white;
 	height: 400px;
-	background-color: 
+	background-color: #037f89;
 }
 
 #hide {
@@ -117,7 +117,7 @@ a {
 	font-weight: 700;
 	color: white;
 	border: 0;
-	background-color: #FFAD2B;
+	background-color: #037f89;
 	position:absolute;
   top:20px;
   right:24px;
@@ -268,13 +268,18 @@ margin-top: 100px;
 }
 
 .howchild h1 {
-	margin-top:0;
+	margin-top:10px;
 	margin-bottom: 0;
 	font-size: 300%;
+	font-weight: 400;
+	color:white;
 }
 
 .howchild p {
 	color:white;
+	font-size: 125%;
+	font-weight: 200;
+	margin-top: 5px;
 }
 
 .fa {
